@@ -41,10 +41,10 @@
     <%= f.number_field :total_miles, class: "form-control" %>
   </div>
 
-  <%= f.fields_for :occurrences do |a| %>
+  <%= f.fields_for :occurrence do |a| %>
     <div class="form-group">
       <%= a.label "Date of occurrence" %>
-      <%= a.date_field :when, class: "form-control" %>
+      <%= a.date_field :occur, class: "form-control" %>
     </div>
   <% end %>
   <br>
