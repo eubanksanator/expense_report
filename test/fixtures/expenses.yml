@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cost: MyString
+  gl_code: 1
+  location: MyString
+  reason: MyText
+  person_entertained: MyString
+  total_miles: 1
+
+two:
+  cost: MyString
+  gl_code: 1
+  location: MyString
+  reason: MyText
+  person_entertained: MyString
+  total_miles: 1
