@@ -7,6 +7,7 @@ class OccurrencesController < ApplicationController
 
   def new
     @occurrence = Occurrence.new
+    @occurrence.expenses.build
   end
 
   def edit
@@ -32,7 +33,8 @@ class OccurrencesController < ApplicationController
   end
 
   def occurrence_params
-    params.require(:occurrence).permit(:when)
+    params.require(:occurrence).permit(:when,
+      expenses_attributes: [:id, :cost, :gl_code, :location, :reason, :person_entertained, :total_miles, :expense_type, :occurrence_id])
   end
 
 end

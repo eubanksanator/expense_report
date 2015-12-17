@@ -1,0 +1,58 @@
+<%= form_for(@occurrence) do |f| %>
+<% if @occurrence.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@occurrence.errors.count, "error") %>
+    prohibited this occurrence from being saved:
+  </h2>
+  <ul>
+    <% @occurrence.errors.full_messages.each do |msg| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="col-md-4">
+  <div class="form-group">
+    <%= f.label "Date of occurrence" %>
+    <%= f.date_field :when, class: "form-control" %>
+  </div>
+
+  <%= f.fields_for :expenses do |expense_form| %>
+  <div class="form-group">
+    <%= expense_form.label :expense_type %>
+    <%= expense_form.text_field :expense_type, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= expense_form.label :cost%>
+    <%= expense_form.text_field :cost, :placeholder => "$", class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= expense_form.label :gl_code %>
+    <%= expense_form.number_field :gl_code, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= expense_form.label :location %>
+    <%= expense_form.text_field :location, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= expense_form.label :reason %>
+    <%= expense_form.text_area :reason, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= expense_form.label :person_entertained %>
+    <%= expense_form.text_field :person_entertained, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= expense_form.label :total_miles %>
+    <%= expense_form.number_field :total_miles, class: "form-control" %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-success" %>
+  </div>
+</div>
+
+<% end %>
