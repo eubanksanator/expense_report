@@ -1,0 +1,9 @@
+class CreateOccurrences < ActiveRecord::Migration
+  def change
+    create_table :occurrences do |t|
+      t.date :when
+
+      t.timestamps null: false
+    end
+  end
+end
