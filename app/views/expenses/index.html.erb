@@ -2,36 +2,16 @@
 
 <h1>Listing Expenses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Cost</th>
-      <th>Gl code</th>
-      <th>Location</th>
-      <th>Reason</th>
-      <th>Person entertained</th>
-      <th>Total miles</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @expenses.each do |expense| %>
-      <tr>
-        <td><%= expense.cost %></td>
-        <td><%= expense.gl_code %></td>
-        <td><%= expense.location %></td>
-        <td><%= expense.reason %></td>
-        <td><%= expense.person_entertained %></td>
-        <td><%= expense.total_miles %></td>
-        <td><%= link_to 'Show', expense %></td>
-        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Expense', new_expense_path %>
+
+<% @expenses.each do |expense| %>
+<div class="col-md-6 col-md-offset-3 well">
+  <h2><%= expense.expense_type %> Expense</h2>
+  <p><b>Cost:</b><%= expense.cost %></p>
+  <p><b>Reason:</b><%= expense.reason %></p>
+  <p><b>Location:</b><%= expense.location %></p>
+  <p><b>Total miles:</b><%= expense.total_miles %></p>
+  <p><b>Entertained:</b><%= expense.person_entertained %></p>
+  <p><b>GL code:</b><%= expense.gl_code %></p>
+</div>
+<% end %>
