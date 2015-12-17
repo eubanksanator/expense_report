@@ -40,6 +40,13 @@
     <%= f.label :total_miles %>
     <%= f.number_field :total_miles, class: "form-control" %>
   </div>
+
+  <%= f.fields_for :occurrences do |a| %>
+    <div class="form-group">
+      <%= a.label "Date of occurrence" %>
+      <%= a.date_field :when, class: "form-control" %>
+    </div>
+  <% end %>
   <br>
   <div class="actions">
     <%= f.submit class: "btn btn-success"%>

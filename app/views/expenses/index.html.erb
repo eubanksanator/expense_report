@@ -6,7 +6,10 @@
 
 <% @expenses.each do |expense| %>
 <div class="col-md-6 col-md-offset-3 well">
-  <h2><%= expense.expense_type %> Expense</h2>
+  <h2>
+    <% expense.expense_type %> Expense
+    <small><%# expense.occurrence.when %></small>
+  </h2>
   <p><b>Cost:</b><%= expense.cost %></p>
   <p><b>Reason:</b><%= expense.reason %></p>
   <p><b>Location:</b><%= expense.location %></p>
