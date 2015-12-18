@@ -6,9 +6,8 @@
 
 <% @expenses.each do |expense| %>
 <div class="col-md-6 col-md-offset-3 well">
-  <h2>Expense
-  <small><%= expense.occurrence.occur.strftime("%B %d, %Y") %></small>
-  </h2>
+<small><%= expense.occurrence.occur.strftime("%B %d, %Y") %></small>
+  <h2><%= expense.expense_type.name %> Expense</h2>
 
   <p><b>Cost:</b><%= expense.cost %></p>
   <p><b>Reason:</b><%= expense.reason %></p>

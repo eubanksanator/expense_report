@@ -13,16 +13,12 @@
 
 <div class="col-md-4">
   <div class="form-group">
-    <%= f.label :expense_type %>
-    <%= f.text_field :expense_type, class: "form-control" %>
+    <%= f.label "Kind of expense" %>
+    <%= collection_select(:expense, :expense_type_id, ExpenseType.all, :id, :name_with_gl) %>
   </div>
   <div class="form-group">
     <%= f.label :cost%>
     <%= f.text_field :cost, :placeholder => "$", class: "form-control"%>
-  </div>
-  <div class="form-group">
-    <%= f.label :gl_code %>
-    <%= f.number_field :gl_code, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :location %>

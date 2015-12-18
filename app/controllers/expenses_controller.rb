@@ -16,6 +16,7 @@ class ExpensesController < ApplicationController
   def new
     @expense = Expense.new
     @expense.build_occurrence
+    @expense.expense_type_id = params[:expense_type_id]
   end
 
   # GET /expenses/1/edit
@@ -70,6 +71,6 @@ class ExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
-      params.require(:expense).permit(:cost, :gl_code, :location, :reason, :person_entertained, :total_miles, :expense_type, :occurrence_id,occurrence_attributes: [:id, :occur])
+      params.require(:expense).permit(:cost, :gl_code, :location, :reason, :person_entertained, :total_miles, :expense_type_id, :occurrence_id,occurrence_attributes: [:id, :occur])
     end
 end
