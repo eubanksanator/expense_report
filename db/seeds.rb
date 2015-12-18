@@ -18,6 +18,30 @@ ExpenseType.create([
   { name: "Client Entertainment", gl_code: 7555 }
   ])
 
+20.times do
+  Occurrence.create([
+    { occur: Faker::Date.between(30.days.ago, Date.today) }
+    ])
+end
+
+@occurrences = Occurrence.all
+@ex_type = ExpenseType.all
+
+@occurrences.each do |occur|
+  Expense.create(
+    cost: "#{rand(1..150)}",
+    location: Faker::Address.street_address,
+    reason: Faker::Company.catch_phrase,
+    person_entertained: Faker::Name.name,
+    occurrence_id: occur.id,
+    expense_type_id: @ex_type.sample.id )
+end
+
+
+
 
 
 puts "Created #{ExpenseType.count} Expense Types"
+puts "Created #{Occurrence.count} Occurrences"
+puts "Created #{Expense.count} Expenses"
+
