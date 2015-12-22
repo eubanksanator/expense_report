@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Expenses</h1>
+<h1>Listing <%= @expenses.count %> Expenses</h1>
 
 <%= link_to 'New Expense', new_expense_path %>
 
-<% @expenses.each do |expense| %>
-<div class="col-md-6 col-md-offset-3 well">
-<small><%= expense.occurrence.occur.strftime("%B %d, %Y") %></small>
-  <h2><%= expense.expense_type.name %> Expense</h2>
+<div class="col-md-12">
+  <% @expenses.each do |expense| %>
+  <div class="col-md-5 well exp-card">
+    <small><%= expense.occurrence.occur.strftime("%B %d, %Y") %></small>
+    <h2><%= expense.expense_type.name %> Expense</h2>
 
-  <p><b>Cost: </b>$<%= expense.cost %></p>
-  <p><b>Reason:</b><%= expense.reason %></p>
-  <p><b>Location:</b><%= expense.location %></p>
-  <p><b>Total miles:</b><%= expense.total_miles %></p>
-  <p><b>Entertained:</b><%= expense.person_entertained %></p>
+    <p><b>Cost: </b>$<%= expense.cost %></p>
+    <p><b>Reason:</b><%= expense.reason %></p>
+    <p><b>Location:</b><%= expense.location %></p>
+    <p><b>Total miles:</b><%= expense.total_miles %></p>
+    <p><b>Entertained:</b><%= expense.person_entertained %></p>
+  </div>
+  <% end %>
 
 </div>
-<% end %>
