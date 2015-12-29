@@ -19,9 +19,9 @@ ExpenseType.create([
   ])
 
 20.times do
-  Occurrence.create([
-    { occur: Faker::Date.between(30.days.ago, Date.today) }
-    ])
+  Occurrence.create(occur: Faker::Date.between(30.days.ago, Date.today))
+  Employee.create(name: Faker::Name.name, email: Faker::Internet.email, password: "12345678", password_confirmation: "12345678")
+
 end
 
 @occurrences = Occurrence.all
@@ -44,4 +44,5 @@ end
 puts "Created #{ExpenseType.count} Expense Types"
 puts "Created #{Occurrence.count} Occurrences"
 puts "Created #{Expense.count} Expenses"
+puts "Created #{Employee.count - 1} Employees"
 

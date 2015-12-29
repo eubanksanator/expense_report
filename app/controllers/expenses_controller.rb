@@ -1,5 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee , only: :new
+
 
   # GET /expenses
   # GET /expenses.json
@@ -17,6 +19,9 @@ class ExpensesController < ApplicationController
     @expense = Expense.new
     @expense.build_occurrence
     @expense.expense_type_id = params[:expense_type_id]
+    if employee_signed_in?
+      @expense.employee_id = current_employee.id
+    end
   end
 
   # GET /expenses/1/edit
@@ -71,6 +76,9 @@ class ExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
-      params.require(:expense).permit(:cost, :gl_code, :location, :reason, :person_entertained, :total_miles, :expense_type_id, :occurrence_id,occurrence_attributes: [:id, :occur])
+      params.require(:expense).permit(:cost, :gl_code, :location, :reason, :person_entertained, :total_miles, :expense_type_id, :occurrence_id, :employee_id, occurrence_attributes: [:id, :occur])
+    end
+    def set_employee
+      @employee = current_employee
     end
 end

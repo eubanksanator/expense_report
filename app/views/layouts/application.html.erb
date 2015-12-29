@@ -9,6 +9,10 @@
 <body>
 <div class="container">
 
+<% if employee_signed_in? %>
+<h6><%= current_employee.name %> is currently signed in</h6>
+<% end %>
+
 <%= yield %>
 </div>
 

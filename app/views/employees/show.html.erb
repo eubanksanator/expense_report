@@ -14,6 +14,9 @@
   <strong>Department Manager:</strong>
   <%= @employee.department.manager %>
 </p>
+<p>
+  <%= @employee.expenses.count %>
+</p>
 
 <%= link_to 'Edit', edit_employee_registration_path(@employee) %> |
-<%= link_to 'Back', employee_path(@employee) %>
+<%= link_to 'Back', root_path %>

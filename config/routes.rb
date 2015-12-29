@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :expenses
   resources :occurrences
 
-  get '/profile', to: 'employees#show'
+  get '/employee/profile', to: 'employees#show'
 
   root 'expenses#index'
 end
