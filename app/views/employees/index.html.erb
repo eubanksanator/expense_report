@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Employees</h1>
-<% @employees.each do |employee| %>
-<div class="row">
-  <b>Name:</b><p><%= employee.name %></p>
-  <b>Department:</b><p><%= employee.department.name %></p>
-  <b>Manager:</b><p><%= employee.department.manager %></p>
-  <p><%= employee.expenses.count %> filed Expenses</p>
-</div>
+
+<% @employees.each do |emp| %>
+  <div class="panel panel-default">
+    <p>Name: <%= emp.name %></p>
+    <p>Department: <%= emp.department.name %></p>
+    <p>Manager: <%= emp.department.manager %></p>
+    <p>Manager Email: <%= emp.department.email %></p>
+  </div>
 <% end %>
