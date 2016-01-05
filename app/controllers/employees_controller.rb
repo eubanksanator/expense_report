@@ -1,14 +1,16 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_employee!,  only: [:show, :edit, :update, :destroy]
+  before_action :employees_in_department, only: :index
 
   # GET /employees
   # GET /employees.json
   def index
-    @it_employees = Employee.joins(:department).where("departments.name = ?", "IT")
-    @hr_employees = Employee.joins(:department).where("departments.name = ?", "HR")
-    @accounting_employees = Employee.joins(:department).where("departments.name = ?", "Accounting")
+    @it_employees = employees_in_department.where("departments.name = ?", "IT")
+    @hr_employees = employees_in_department.where("departments.name = ?", "HR")
+    @accounting_employees = employees_in_department.where("departments.name = ?", "Accounting")
   end
+
 
   # GET /employees/1
   # GET /employees/1.json
@@ -70,8 +72,12 @@ class EmployeesController < ApplicationController
       @employee = current_employee
     end
 
+    def employees_in_department
+      Employee.joins(:department)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       params.require(:employee).permit(:name, :department_id)
     end
-end
+  end
