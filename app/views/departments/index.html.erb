@@ -1,0 +1,10 @@
+    <% @departments.each do |d| %>
+
+    <div class="well <%= d.depart_color %>">
+      <ul>
+        <li>Department: <%= d.name %></li>
+        <li>Manager: <%= d.manager %></li>
+        <li>Manager Email: <%= d.email %></li>
+      </ul>
+    </div>
+    <% end %>

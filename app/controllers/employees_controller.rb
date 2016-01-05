@@ -5,7 +5,9 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @it_employees = Employee.joins(:department).where("departments.name = ?", "IT")
+    @hr_employees = Employee.joins(:department).where("departments.name = ?", "HR")
+    @accounting_employees = Employee.joins(:department).where("departments.name = ?", "Accounting")
   end
 
   # GET /employees/1

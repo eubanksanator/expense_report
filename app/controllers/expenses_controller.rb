@@ -78,7 +78,12 @@ class ExpensesController < ApplicationController
     def expense_params
       params.require(:expense).permit(:cost, :gl_code, :location, :reason, :person_entertained, :total_miles, :expense_type_id, :occurrence_id, :employee_id, occurrence_attributes: [:id, :occur])
     end
+
     def set_employee
-      @employee = current_employee
+      if employee_signed_in?
+        @employee = current_employee
+      else
+        redirect_to employee_session_path
+      end
     end
-end
+  end

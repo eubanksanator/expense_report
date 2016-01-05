@@ -20,11 +20,10 @@ ExpenseType.create([
   { name: "Client Entertainment", gl_code: 7555 }
   ])
 
-10.times do
   Department.create(name: "IT", manager: Faker::Name.name, email: Faker::Internet.email)
   Department.create(name: "HR", manager: Faker::Name.name, email: Faker::Internet.email)
   Department.create(name: "Accounting", manager: Faker::Name.name, email: Faker::Internet.email)
-end
+
 
 20.times do
   @department_id = Department.all.sample.id

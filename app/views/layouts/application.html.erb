@@ -7,14 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
+  <div class="container">
 
-<% if employee_signed_in? %>
-<h6><%= current_employee.name %> is currently signed in</h6>
-<% end %>
+    <% if employee_signed_in? %>
+    <h6><%= current_employee.name %> is currently signed in</h6>
+    <% end %>
 
-<%= yield %>
-</div>
+    <div class="row">
+      <nav class="col-md-8 col-md-offset-2">
+        <ul class="nav">
+        <li class="col-md-3"><%= link_to "Employees", employees_path %></li>
+          <li class="col-md-3"><%= link_to "Departments", departments_path %></li>
+          <li class="col-md-3"><%= link_to "Expense Types", expense_types_path %></li>
+          <li class="col-md-3"><%= link_to "Expense", expenses_path %></li>
+        </ul>
+      </nav>
+    </div>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>
