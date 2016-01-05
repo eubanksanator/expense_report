@@ -8,24 +8,25 @@
 </head>
 <body>
   <div class="container">
-
-    <% if employee_signed_in? %>
-    <h6><%= current_employee.name %> is currently signed in</h6>
-    <% end %>
-
     <div class="row">
-      <nav class="col-md-8 col-md-offset-2">
-        <ul class="nav">
-        <li class="col-md-3"><%= link_to "Employees", employees_path %></li>
-          <li class="col-md-3"><%= link_to "Departments", departments_path %></li>
-          <li class="col-md-3"><%= link_to "Expense Types", expense_types_path %></li>
-          <li class="col-md-3"><%= link_to "Expense", expenses_path %></li>
-        </ul>
-      </nav>
-    </div>
 
-    <%= yield %>
+      <% if employee_signed_in? %>
+      Signed in as <%= current_employee.name %> (<%= link_to "sign out", destroy_employee_session_path %>)
+      <% else %>
+      <%= link_to "Sign up", new_employee_registration_path %> | <%= link_to "Sign in", new_employee_session_path %>
+      <% end %>
+
+      <nav class="pull-right nav">
+        <%= link_to "Employees", employees_path %> |
+        <%= link_to "Departments", departments_path %> |
+        <%= link_to "Expense Types", expense_types_path %> |
+        <%= link_to "Expense", expenses_path %>
+    </div>
   </div>
 
+
+<div class="container">
+  <%= yield %>
+</div>
 </body>
 </html>

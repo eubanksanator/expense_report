@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :employees
   resources :employees, only: [:index, :show]
+  devise_for :employees
   resources :expense_types
   resources :expenses
   resources :occurrences
