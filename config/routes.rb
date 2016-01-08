@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :employees, only: [:index, :show]
+  resources :employees, only: [:index,]
   devise_for :employees
   resources :expense_types
   resources :expenses

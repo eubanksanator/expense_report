@@ -1,6 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_employee!,  only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_employee!, only: [:edit, :update, :destroy]
   before_action :employees_in_department, only: :index
 
   # GET /employees
@@ -68,9 +67,7 @@ class EmployeesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_employee
-      @employee = current_employee
-    end
+
 
     def employees_in_department
       Employee.joins(:department)
