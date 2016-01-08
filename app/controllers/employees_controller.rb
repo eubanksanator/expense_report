@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  # before_action :authenticate_employee!, only: [:edit, :update, :destroy]
+  before_action :authenticate_employee!, only: [:edit, :update, :destroy]
   before_action :employees_in_department, only: :index
 
   # GET /employees
